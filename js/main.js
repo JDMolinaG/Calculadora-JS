@@ -7,7 +7,7 @@
 // function calcularSuma() {
 
 
-    
+
 //     let resultado = parseInt(numero1) + parseInt(numero2);
 
 //     mostrarResultado.innerHTML = resultado;
@@ -17,9 +17,9 @@
 // }
 
 let resultado = document.getElementById('resultado')
-let operandoa,
-    operandob,
-    operacion;
+var operandoa
+var operandob
+var operacion
 
 
 
@@ -39,68 +39,103 @@ let cero = document.getElementById('cero')
 let suma = document.getElementById('suma')
 let resta = document.getElementById('resta')
 let multiplicacion = document.getElementById('multiplicacion')
-let division = document.getElementById('division')
+let division = document.getElementById('dividir')
 let borrar = document.getElementById('borrar')
 let igual = document.getElementById('igual')
 
 // eventos
-uno.addEventListener('click',function(){
+
+// cada evento coloca en la pantalla el boton al que se le hizo click 
+uno.addEventListener('click', function (e) {
     resultado.textContent = resultado.textContent + "1";
 })
 
-dos.addEventListener('click',function(){
+dos.addEventListener('click', function (e) {
     resultado.textContent = resultado.textContent + "2";
 })
 
-tres.addEventListener('click',function(){
+tres.addEventListener('click', function (e) {
     resultado.textContent = resultado.textContent + "3";
 })
 
-cuatro.addEventListener('click',function(){
+cuatro.addEventListener('click', function (e) {
     resultado.textContent = resultado.textContent + "4";
 })
-   
-cinco.addEventListener('click',function(){
+
+cinco.addEventListener('click', function (e) {
     resultado.textContent = resultado.textContent + "5";
 })
 
-seis.addEventListener('click',function(){
+seis.addEventListener('click', function (e) {
     resultado.textContent = resultado.textContent + "6";
 })
 
-siete.addEventListener('click',function(){
+siete.addEventListener('click', function (e) {
     resultado.textContent = resultado.textContent + "7";
 })
 
-ocho.addEventListener('click',function(){
+ocho.addEventListener('click', function (e) {
     resultado.textContent = resultado.textContent + "8";
 })
 
-nueve.addEventListener('click',function(){
+nueve.addEventListener('click', function (e) {
     resultado.textContent = resultado.textContent + "9";
 })
 
-cero.addEventListener('click',function(){
+cero.addEventListener('click', function (e) {
     resultado.textContent = resultado.textContent + "0";
 })
 
-suma.addEventListener('click', function(e){
+suma.addEventListener('click', function (e) {
     operandoa = resultado.textContent
     operacion = '+'
+    
     limpiar()
 })
-resta.addEventListener('click', function(e){
+
+resta.addEventListener('click', function (e) {
     operandoa = resultado.textContent
     operacion = '-'
+    // console.log(operacion)
     limpiar()
 })
-multiplicacion.addEventListener('click', function(e){
+multiplicacion.addEventListener('click', function (e) {
     operandoa = resultado.textContent
     operacion = '*'
     limpiar()
 })
-division.addEventListener('click', function(e){
+division.addEventListener('click', function (e) {
     operandoa = resultado.textContent
     operacion = '/'
     limpiar()
 })
+igual.addEventListener('click', function (e) {
+    operandob = resultado.textContent
+    resolver()
+    
+})
+borrar.addEventListener('click',limpiar)
+function limpiar() {
+    resultado.textContent = ''
+}
+function resolver() {
+    let res = 0
+    switch (operacion) {
+        case '+':
+            res = parseFloat(operandoa) + parseFloat(operandob)
+            break;
+        case '-':
+            res = parseFloat(operandoa) - parseFloat(operandob)
+            break;
+        case '*':
+            res = parseFloat(operandoa) * parseFloat(operandob)
+            break;
+        case '/':
+            res = parseFloat(operandoa) / parseFloat(operandob)
+            break;
+
+    }
+    console.log(res)
+    resultado.textContent = res;
+}
+
